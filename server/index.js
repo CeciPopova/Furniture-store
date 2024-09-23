@@ -1,10 +1,14 @@
 const express = require('express');
-
+const mongoose = require('mongoose');
 const cors = require('cors');
 
 const routes = require('./routes');
 
 const app = express();
+
+mongoose.connect('mongodb://127.0.0.1:27017/furnitures')
+.then(() => console.log('DB Connected'))
+.catch(err => console.log(err));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
